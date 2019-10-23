@@ -1,0 +1,4 @@
+script:
+  - shellcheck DDNS-Timer.sh
+services:
+  - docker
