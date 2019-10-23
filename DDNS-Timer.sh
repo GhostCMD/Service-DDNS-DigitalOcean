@@ -8,7 +8,7 @@ Update(){
 make_dns_record(){
 	IP=`curl -s http://ipv4bot.whatismyipaddress.com/`
 	curl -s -X POST -H "Content-Type: application/json" -H "Authorization: Bearer $TOKEN" -d "{\"type\":\"A\",\"name\":\"$DATA\",\"data\":\"$IP\",\"priority\":null,\"port\":null,\"ttl\":1800,\"weight\":null,\"flags\":null,\"tag\":null}" "https://api.digitalocean.com/v2/domains/$DOMAIN/records" | jq '.domain_record.id' > /tmp/id
-	export ID=`cat /tmp/id
+	export ID=`cat /tmp/id`
 	rm -f /tmp/id
 }
 
