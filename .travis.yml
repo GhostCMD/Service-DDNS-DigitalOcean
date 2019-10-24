@@ -14,6 +14,7 @@ install:
   - sudo apt-get install git -y
 script:
   - shellcheck DDNS-Timer.sh
+  - apk add git 
   - git ls-files --exclude='Dockerfile*' --ignored | xargs --max-lines=1 ${HADOLINT}
 after_success:
   - docker push -u "${NAME}" -p "${HUBKEY}"
