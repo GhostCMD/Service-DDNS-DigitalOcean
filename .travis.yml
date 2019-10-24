@@ -10,9 +10,10 @@ services:
   - docker
 install:
   - curl -sL -o ${HADOLINT} "https://github.com/hadolint/hadolint/releases/download/v1.16.0/hadolint-$(uname -s)-$(uname -m)" && chmod 700 ${HADOLINT}
+  - docker pull hadolint/hadolint
 script:
   - shellcheck DDNS-Timer.sh   
-  - ./"${HADOLINT}" Dockerfile
+  - docker run --rm -i hadolint/hadolint < Dockerfile
 after_success:
   - docker push -u "${NAME}" -p "${HUBKEY}"
   - docker build -t "${NAME}""${REPO}":latest .
