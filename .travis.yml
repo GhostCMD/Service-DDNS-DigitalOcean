@@ -13,8 +13,9 @@ install:
 script:
   - shellcheck DDNS-Timer.sh   
 after_success:
-  - docker push -u "${NAME}" -p "${HUBKEY}"
+  - docker login -u "${NAME}" -p "${HUBKEY}"
   - docker build -t "${NAME}""${REPO}":latest .
 deploy:
   provider: script
   script: docker push "${NAME}""${REPO}":latest
+  
