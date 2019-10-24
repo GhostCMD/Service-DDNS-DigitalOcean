@@ -13,7 +13,7 @@ install:
   - docker pull hadolint/hadolint:latest-debian
 script:
   - shellcheck DDNS-Timer.sh   
-  - docker run --rm -i hadolint/hadolint < Dockerfile
+  - docker run --rm -i hadolint/hadolint:latest-debian < Dockerfile 2&> /dev/null
 after_success:
   - docker push -u "${NAME}" -p "${HUBKEY}"
   - docker build -t "${NAME}""${REPO}":latest .
