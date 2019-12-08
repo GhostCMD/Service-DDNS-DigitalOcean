@@ -1,0 +1,15 @@
+sudo: true
+language: generic
+env:
+  HADOLINT: "${HOME}/hadolint"
+  NAME: ghostlink
+  REPO: service-ddns-digitalocean
+git:
+  depth: false
+services:
+  - docker
+install:
+  - curl -sL -o ${HADOLINT} "https://github.com/hadolint/hadolint/releases/download/v1.16.0/hadolint-$(uname -s)-$(uname -m)" && chmod 711 ${HADOLINT}
+script:
+  - shellcheck DDNS-Timer.sh   
+  
