@@ -1,5 +1,5 @@
 Update(){
-lexicon digitalocean --name="$DOMAIN" update $DOMAIN A --content=`curl -s http://ipv4bot.whatismyipaddress.com/` 
+lexicon digitalocean --name="$DOMAIN" update $DOMAIN A --content=$(curl -s http://ipv4bot.whatismyipaddress.com/)
 }
 
 
